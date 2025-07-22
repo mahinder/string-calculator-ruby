@@ -1,6 +1,6 @@
 class StringCalculator
   def self.add(input)
    return 0 if input.empty?
-   input
+   input.to_i
   end
 end
