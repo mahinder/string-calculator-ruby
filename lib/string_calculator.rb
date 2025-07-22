@@ -11,6 +11,11 @@ class StringCalculator
     return 0 if input.nil? || input.strip.empty?
 
     delimiter, numbers_string = extract_delimiter_and_numbers(input)
+
+    unless numbers_string.match?(/\A[0-9#{Regexp.escape(delimiter.source)}\n,]*\z/)
+      return 0
+    end
+
     numbers = parse_numbers(numbers_string, delimiter)
 
     check_for_negatives(numbers)
