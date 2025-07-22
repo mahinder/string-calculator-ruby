@@ -7,7 +7,7 @@ RSpec.describe StringCalculator do
     end
 
     it 'returns the number for a single input' do
-      expect(StringCalculator.add("4")).to eq(5)
+      expect(StringCalculator.add("4")).to eq(4)
     end
   end
 end
