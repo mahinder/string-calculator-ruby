@@ -1,8 +1,12 @@
 class StringCalculator
   # Adds numbers from a string.
   # The method can handle custom delimiters and raises an error for negative numbers.
+
+  class NegativeNumberError < StandardError; end
+  class InvalidInputFormatError < StandardError; end
+
   def self.add(input)
-    return 0 if input.empty?
+    return 0 if input.nil? || input.strip.empty?
 
     delimiter = /,|\n/
     if input.start_with?("//")
@@ -16,7 +20,7 @@ class StringCalculator
     negatives = numbers.select { |n| n < 0 }
 
     if negatives.any?
-      raise "negative numbers not allowed #{negatives.join(',')}"
+      raise "negative numbers not allowed #{negatives.join(",")}"
     end
 
     numbers.sum
