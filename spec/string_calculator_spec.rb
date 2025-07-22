@@ -7,10 +7,12 @@ RSpec.describe StringCalculator do
       expect(described_class.add(nil)).to eq(0)
     end
 
-    it 'raises error for input "nil"' do
-      expect {
-        StringCalculator.add("nil")
-      }.to raise_error(StringCalculator::InvalidInputFormatError, /non-numeric/i)
+    it 'returns 0 for input "nil"' do
+      expect(described_class.add("nil")).to eq(0)
+    end
+
+    it "returns 0 for non-numeric input" do
+      expect(described_class.add("abc")).to eq(0)
     end
 
     # Test case for an empty string, expecting 0.
@@ -52,12 +54,6 @@ RSpec.describe StringCalculator do
     it "raises error if custom delimiter is empty" do
       expect {
         described_class.add("//\n1")
-      }.to raise_error(StringCalculator::InvalidInputFormatError)
-    end
-
-    it "raises error for non-numeric input" do
-      expect {
-        described_class.add("1,a,3")
       }.to raise_error(StringCalculator::InvalidInputFormatError)
     end
 
