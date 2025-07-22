@@ -7,6 +7,12 @@ RSpec.describe StringCalculator do
       expect(described_class.add(nil)).to eq(0)
     end
 
+    it 'raises error for input "nil"' do
+      expect {
+        StringCalculator.add("nil")
+      }.to raise_error(StringCalculator::InvalidInputFormatError, /non-numeric/i)
+    end
+
     # Test case for an empty string, expecting 0.
     it "returns 0 for empty string" do
       expect(StringCalculator.add("")).to eq(0)
