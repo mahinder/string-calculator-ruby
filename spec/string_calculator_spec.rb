@@ -43,6 +43,12 @@ RSpec.describe StringCalculator do
       }.to raise_error(StringCalculator::InvalidInputFormatError)
     end
 
+    it "raises error if custom delimiter is empty" do
+      expect {
+        described_class.add("//\n1")
+      }.to raise_error(StringCalculator::InvalidInputFormatError)
+    end
+
     # Test case for a single negative number, expecting an error.
     it "raises error for negative numbers" do
       expect { StringCalculator.add("1,-2") }.to raise_error("negative numbers not allowed -2")
