@@ -3,6 +3,10 @@ require "string_calculator"
 # This file contains the RSpec tests for the StringCalculator class.
 RSpec.describe StringCalculator do
   describe ".add" do
+    it "returns 0 for nil input" do
+      expect(described_class.add(nil)).to eq(0)
+    end
+
     # Test case for an empty string, expecting 0.
     it "returns 0 for empty string" do
       expect(StringCalculator.add("")).to eq(0)
